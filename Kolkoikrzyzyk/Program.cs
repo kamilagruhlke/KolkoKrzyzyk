@@ -32,12 +32,14 @@ namespace Kolkoikrzyzyk
             while (true)
             {
                 var znak = Console.ReadKey();
+                bool zmianaZnaku = false;
 
                 if (znak.KeyChar == '7')
                 {
                     if (string.IsNullOrWhiteSpace(plansza[0, 0]))
                     {
                         plansza[0, 0] = ostatniZnak;
+                        zmianaZnaku = true;
                     }
                     else
                     {
@@ -49,17 +51,19 @@ namespace Kolkoikrzyzyk
                     if (string.IsNullOrWhiteSpace(plansza[0, 1]))
                     {
                         plansza[0, 1] = ostatniZnak;
+                        zmianaZnaku = true;
                     }
                     else
                     {
                         Console.WriteLine("To pole jest już zajęte");
                     }
                 }
-                else if(znak.KeyChar == '9')
+                else if (znak.KeyChar == '9')
                 {
                     if (string.IsNullOrWhiteSpace(plansza[0, 2]))
                     {
                         plansza[0, 2] = ostatniZnak;
+                        zmianaZnaku = true;
                     }
                     else
                     {
@@ -71,6 +75,7 @@ namespace Kolkoikrzyzyk
                     if (string.IsNullOrWhiteSpace(plansza[1, 0]))
                     {
                         plansza[1, 0] = ostatniZnak;
+                        zmianaZnaku = true;
                     }
                     else
                     {
@@ -82,6 +87,7 @@ namespace Kolkoikrzyzyk
                     if (string.IsNullOrWhiteSpace(plansza[1, 1]))
                     {
                         plansza[1, 1] = ostatniZnak;
+                        zmianaZnaku = true;
                     }
                     else
                     {
@@ -93,6 +99,7 @@ namespace Kolkoikrzyzyk
                     if (string.IsNullOrWhiteSpace(plansza[1, 2]))
                     {
                         plansza[1, 2] = ostatniZnak;
+                        zmianaZnaku = true;
                     }
                     else
                     {
@@ -104,6 +111,7 @@ namespace Kolkoikrzyzyk
                     if (string.IsNullOrWhiteSpace(plansza[2, 0]))
                     {
                         plansza[2, 0] = ostatniZnak;
+                        zmianaZnaku = true;
                     }
                     else
                     {
@@ -115,6 +123,7 @@ namespace Kolkoikrzyzyk
                     if (string.IsNullOrWhiteSpace(plansza[2, 1]))
                     {
                         plansza[2, 1] = ostatniZnak;
+                        zmianaZnaku = true;
                     }
                     else
                     {
@@ -126,6 +135,7 @@ namespace Kolkoikrzyzyk
                     if (string.IsNullOrWhiteSpace(plansza[2, 2]))
                     {
                         plansza[2, 2] = ostatniZnak;
+                        zmianaZnaku = true;
                     }
                     else
                     {
@@ -140,22 +150,77 @@ namespace Kolkoikrzyzyk
                 {
                     for (int j = 0; j < 3; j++)
                     {
-                        Console.Write(plansza[i, j] + " ");
+                        if(string.IsNullOrWhiteSpace(plansza[i, j]))
+                        {
+                            Console.Write("  ");
+                        }
+                        else
+                        {
+                            Console.Write(plansza[i, j] + " ");
+                        }
+                        
                     }
                     Console.WriteLine();
                 }
 
-                if (ostatniZnak == x)
+                if (SprawczCzyWygral(plansza, ostatniZnak))
                 {
-                    ostatniZnak = o;
+                    Console.WriteLine($"Wygrał {ostatniZnak}");
+                    break;
                 }
-                else
+
+                if (zmianaZnaku)
                 {
-                    ostatniZnak = x;
+                    if (ostatniZnak == x)
+                    {
+                        ostatniZnak = o;
+                    }
+                    else
+                    {
+                        ostatniZnak = x;
+                    }
                 }
             }
 
             Console.ReadKey();
+        }
+
+        private static bool SprawczCzyWygral(string[,] plansza, string gracz)
+        {
+            if(plansza[0, 0] == gracz && plansza[0, 1] == gracz && plansza[0, 2] == gracz)
+            {
+                return true;
+            }
+            else if(plansza[1, 0] == gracz && plansza[1, 1] == gracz && plansza[1, 2] == gracz)
+            {
+                return true;
+            }
+            else if(plansza[2, 0] == gracz && plansza[2, 1] == gracz && plansza[2, 2] == gracz)
+            {
+                return true;
+            }
+            else if (plansza[0, 0] == gracz && plansza[1, 0] == gracz && plansza[2, 0] == gracz)
+            {
+                return true;
+            }
+            else if (plansza[0, 1] == gracz && plansza[1, 1] == gracz && plansza[2, 1] == gracz)
+            {
+                return true;
+            }
+            else if (plansza[0, 2] == gracz && plansza[1, 2] == gracz && plansza[2, 2] == gracz)
+            {
+                return true;
+            }
+            else if (plansza[0, 0] == gracz && plansza[1, 1] == gracz && plansza[2, 2] == gracz)
+            {
+                return true;
+            }
+            else if (plansza[0, 2] == gracz && plansza[1, 1] == gracz && plansza[2, 0] == gracz)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
