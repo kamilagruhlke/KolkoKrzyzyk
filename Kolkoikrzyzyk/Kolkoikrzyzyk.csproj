@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gra.Logika\Gra.Logika.csproj">
+      <Project>{8480f7ce-a34b-40df-9714-90cc456f7915}</Project>
+      <Name>Gra.Logika</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
