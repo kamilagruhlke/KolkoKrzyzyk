@@ -24,6 +24,12 @@ namespace Kolkoikrzyzyk
             var x = "X";
             var o = "O";
 
+            Dictionary<string, string> gracze = new Dictionary<string, string>()
+            {
+                { x, gracz1 },
+                { o, gracz2 }
+            };
+
             Console.WriteLine($"{gracz1} otrzymuje znak {x}, {gracz2} otrzymuje znak {o}");
 
             var plansza = new string[3, 3];
@@ -165,7 +171,7 @@ namespace Kolkoikrzyzyk
 
                 if (SprawczCzyWygral(plansza, ostatniZnak))
                 {
-                    Console.WriteLine($"Wygrał {ostatniZnak}");
+                    Console.WriteLine($"Wygrał {gracze[ostatniZnak]}");
                     break;
                 }
 
