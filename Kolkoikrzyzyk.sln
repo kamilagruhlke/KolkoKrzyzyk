@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kolkoikrzyzyk", "Kolkoikrzyzyk\Kolkoikrzyzyk.csproj", "{25FC31F0-16E0-42D9-9D32-17A5AFF32CD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gra.Logika", "Gra.Logika\Gra.Logika.csproj", "{8480F7CE-A34B-40DF-9714-90CC456F7915}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gra.Logika", "Gra.Logika\Gra.Logika.csproj", "{8480F7CE-A34B-40DF-9714-90CC456F7915}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

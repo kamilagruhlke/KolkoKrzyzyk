@@ -31,6 +31,8 @@ namespace Gra.Logika
                 var znak = Console.ReadKey();
                 bool zmianaZnaku = false;
 
+                Console.WriteLine();                    
+
                 if (znak.KeyChar == '7')
                 {
                     if (string.IsNullOrWhiteSpace(plansza[0, 0]))
@@ -142,7 +144,6 @@ namespace Gra.Logika
 
                 Console.WriteLine();
 
-                //kolumny
                 for (int i = 0; i < 3; i++)
                 {
                     for (int j = 0; j < 3; j++)
@@ -163,6 +164,12 @@ namespace Gra.Logika
                 if (SprawczCzyWygral(plansza, ostatniZnak))
                 {
                     Console.WriteLine($"Wygrał {Gracze[ostatniZnak]}");
+                    break;
+                }
+
+                if (CzyGraZakonczona())
+                {
+                    Console.WriteLine("Remis");
                     break;
                 }
 
@@ -219,14 +226,20 @@ namespace Gra.Logika
 
             return false;
         }
-        private bool CzyGraZakonczona(string[,] plansza, string znak)
+
+        private bool CzyGraZakonczona()
         {
-            if (plansza[0, 0] == znak)
+            for (int i = 0; i < 3; i++)
             {
-                return true;
+                for (int j = 0; j < 3; j++)
+                {
+                    if (string.IsNullOrEmpty(plansza[i,j]))
+                    {
+                        return false;
+                    }
+                }
             }
-
-
+            return true;
         }
     }
 }
